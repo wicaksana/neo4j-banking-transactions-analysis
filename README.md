@@ -23,14 +23,14 @@ http://localhost:7474
 
 This project uses datasets from [banking - Customer & Transaction data](https://gist.github.com/maruthiprithivi/f11bf40b558879aca0c30ce76e7dec98). For simplicity, the datasets are also included in this repo:
 
-  - [customers.csv](./datasets/customer.csv)
+  - [customers.csv](./datasets/customers.csv)
   - [purchases.csv](./datasets/purchases.csv)
   - [transfers.csv](./datasets/transfers.csv)
 
 
 ## Data Model
 
-The data is modeled using [arrows.app](https://arrows.app/), which is available in [JSON format](./Bank_transaction_purchase.json).
+The data is modeled using [arrows.app](https://arrows.app/), which is available in JSON format([Bank_transaction_purchase.json](./Bank_transaction_purchase.json)).
 
 The following image illustrates it:
 
@@ -38,7 +38,7 @@ The following image illustrates it:
 
 ## Loading the data into Neo4j
 
-This project uses Python to cleanse and load the data. The script is written as a Jupyter Notebook ([banking_ingestion.ipynb](./banking_ingestion.ipynb)) to make it easier to follow.
+This project uses Python to cleanse and load the data. The script is written as a Jupyter Notebook ([banking_ingestion.ipynb](./banking_ingestion.ipynb)) to make it easier to follow. Please use [Nbviewer](https://nbviewer.org/github/wicaksana/neo4j-banking-transactions-analysis/blob/main/banking_ingestion.ipynb) to open the notebook in case Github fails to render it.
 
 Environment specification:
 
