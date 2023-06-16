@@ -124,3 +124,7 @@ Result:
 │"Morgan James"   │177           │1742265.338604869 │
 └─────────────────┴──────────────┴──────────────────┘
 ```
+
+### Merchant recommendation for customers with similar purchase behavior
+
+TBA.
