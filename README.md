@@ -128,3 +128,7 @@ Result:
 ### Merchant recommendation for customers with similar purchase behavior
 
 TBA.
+
+### Based on purchase time and place, who are likely to be part of customer X's circle?
+
+TBA.

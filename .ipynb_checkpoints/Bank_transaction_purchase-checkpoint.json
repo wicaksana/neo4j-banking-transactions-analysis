@@ -1,0 +1,349 @@
+{
+  "style": {
+    "font-family": "Nunito Sans",
+    "background-color": "#F2F2F2",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#4C8EDA",
+    "border-width": 0,
+    "border-color": "#000000",
+    "radius": 75,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#ffffff",
+    "caption-font-size": 20,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "bare",
+    "label-color": "#ffffff",
+    "label-background-color": "#848484",
+    "label-border-color": "#848484",
+    "label-border-width": 3,
+    "label-font-size": 20,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "above",
+    "detail-orientation": "parallel",
+    "arrow-width": 3,
+    "arrow-color": "#848484",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#848484",
+    "type-background-color": "#F2F2F2",
+    "type-border-color": "#848484",
+    "type-border-width": 0,
+    "type-font-size": 21,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#848484",
+    "property-font-size": 20,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": -21793.93218748227,
+        "y": -2825.868915923951
+      },
+      "caption": "",
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "cif": "1",
+        "age": "26",
+        "email_address": "Greta_Swan6281@corti.com",
+        "first_name": "Greta",
+        "last_name": "Swan",
+        "phone_number": "6-254-223-4334",
+        "gender": "Female",
+        "Job_title": "Bellman"
+      },
+      "style": {
+        "node-color": "#f44e3b"
+      }
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": -21409.360220160164,
+        "y": -2980.4723026433235
+      },
+      "caption": "",
+      "labels": [
+        "Address"
+      ],
+      "properties": {
+        "address_line": "Armory Tunnel, 3699"
+      },
+      "style": {
+        "node-color": "#7b64ff"
+      }
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": -20990.145173242425,
+        "y": -3033.969326952918
+      },
+      "caption": "",
+      "labels": [
+        "Country"
+      ],
+      "properties": {
+        "name": "Egypt"
+      },
+      "style": {
+        "node-color": "#fb9e00"
+      }
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": -21757.33565527129,
+        "y": -3246.9147531842364
+      },
+      "caption": "",
+      "labels": [
+        "Credit_card"
+      ],
+      "properties": {
+        "card_number": "348-14-6088",
+        "issuer": "Bank of America"
+      },
+      "style": {
+        "node-color": "#194d33"
+      }
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": -22302.772886427483,
+        "y": -2621.3077361131204
+      },
+      "caption": "",
+      "labels": [
+        "Account"
+      ],
+      "properties": {
+        "account_number": "650-63-6154"
+      },
+      "style": {
+        "node-color": "#a4dd00"
+      }
+    },
+    {
+      "id": "n6",
+      "position": {
+        "x": -22624.7622073108,
+        "y": -3246.9147531842364
+      },
+      "caption": "",
+      "labels": [
+        "Merchant"
+      ],
+      "properties": {
+        "name": "Biolife Grup"
+      },
+      "style": {
+        "node-color": "#808900"
+      }
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": -21793.93218748227,
+        "y": -2182.5734940017637
+      },
+      "caption": "",
+      "labels": [
+        "Account"
+      ],
+      "properties": {
+        "account_number": "430-04-5447"
+      },
+      "style": {
+        "node-color": "#a4dd00"
+      }
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": -21234.850319123143,
+        "y": -2310.037734366955
+      },
+      "caption": "",
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "cif": "2",
+        "age": "41",
+        "email_address": "Rebecca_Corbett5111@ovock.tech",
+        "first_name": "Rebecca",
+        "last_name": "Corbett",
+        "phone_number": "5-720-670-7047",
+        "gender": "Female",
+        "Job_title": "Clerk"
+      },
+      "style": {
+        "node-color": "#f44e3b"
+      }
+    },
+    {
+      "id": "n9",
+      "position": {
+        "x": -20788.93648770938,
+        "y": -2567.48620496907
+      },
+      "caption": "",
+      "labels": [
+        "Address"
+      ],
+      "properties": {
+        "address_line": "Apostle Tunnel, 4850"
+      },
+      "style": {
+        "node-color": "#7b64ff"
+      }
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": -22365.982590506705,
+        "y": -2222.297598766972
+      },
+      "caption": "",
+      "labels": [
+        "Transfer"
+      ],
+      "properties": {
+        "id": "287062",
+        "amounts": "8584.094218",
+        "datetime": "2021-02-21 16:2149Z"
+      },
+      "style": {}
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": -22191.048931291043,
+        "y": -3176.9760753181404
+      },
+      "caption": "",
+      "labels": [
+        "Purchase"
+      ],
+      "properties": {
+        "id": "751133",
+        "amount": "9849.265683",
+        "datetime": "2021-04-12 15:32:22Z"
+      },
+      "style": {}
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n0",
+      "toId": "n1",
+      "type": "LIVES_AT",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "type": "LOCATED_IN",
+      "style": {},
+      "properties": {},
+      "fromId": "n1",
+      "toId": "n2"
+    },
+    {
+      "id": "n2",
+      "fromId": "n0",
+      "toId": "n3",
+      "type": "HAS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "fromId": "n0",
+      "toId": "n4",
+      "type": "HAS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "fromId": "n8",
+      "toId": "n7",
+      "type": "HAS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "fromId": "n8",
+      "toId": "n9",
+      "type": "LIVES_AT",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "type": "LOCATED_IN",
+      "style": {},
+      "properties": {},
+      "fromId": "n9",
+      "toId": "n2"
+    },
+    {
+      "id": "n9",
+      "type": "TRANSFER_IN",
+      "style": {},
+      "properties": {},
+      "fromId": "n4",
+      "toId": "n10"
+    },
+    {
+      "id": "n10",
+      "type": "TRANSFER_OUT",
+      "style": {},
+      "properties": {},
+      "fromId": "n7",
+      "toId": "n10"
+    },
+    {
+      "id": "n11",
+      "type": "BUY",
+      "style": {},
+      "properties": {},
+      "fromId": "n3",
+      "toId": "n11"
+    },
+    {
+      "id": "n12",
+      "type": "SELL",
+      "style": {},
+      "properties": {},
+      "fromId": "n6",
+      "toId": "n11"
+    }
+  ]
+}
