@@ -171,3 +171,87 @@ LIMIT 10
 └─────────────────┴─────┴──────────────────────────────────────────────────────────────────────┘
 
 ```
+
+## Finding similar customers based on purchase history using FastRP and kNN
+
+Leveraging the Neo4j Graph Data Science library. Based on the following [tutorial](https://neo4j.com/docs/graph-data-science/current/end-to-end-examples/fastrp-knn-example/).
+
+### Project a graph called 'purchases' and store it in the graph catalog
+
+```sql
+CALL gds.graph.project(
+    'purchases',
+    {
+        Credit_card: {},
+        Purchase: {properties: 'amount'},
+        Merchant: {}
+    },
+    { 
+        BUY: {orientation: 'UNDIRECTED'},
+        SELL: {orientation: 'UNDIRECTED'}
+    }   
+)
+```
+
+### Create node embeddings using FastRP
+
+```sql
+CALL gds.fastRP.mutate(
+    'purchases',
+    {
+        embeddingDimension: 128,
+        randomSeed: 42,
+        mutateProperty: 'embedding',
+        iterationWeights: [0.0, 1.0, 1.0]
+    }
+)
+YIELD nodePropertiesWritten
+```
+
+### Run kNN with FastRP node embeddings as input in order to get similarities
+
+```sql
+CALL gds.knn.write('purchases', {
+    topK: 2,
+    nodeProperties: ['embedding'],
+    randomSeed: 42,
+    concurrency: 1,
+    sampleRate: 1,
+    deltaThreshold: 0.1,
+    writeRelationshipType: 'SIMILAR',
+    writeProperty: 'score'
+})
+YIELD nodesCompared, relationshipsWritten, similarityDistribution
+RETURN nodesCompared, relationshipsWritten, similarityDistribution.mean as meanSimilarity
+```
+
+### List pairs of people that are similar
+
+```sql
+MATCH (cc1:Credit_card)-[r:SIMILAR]->(cc2:Credit_card),
+    (p1:Customer)-[:HAS]->(cc1), 
+    (p2:Customer)-[:HAS]->(cc2)
+RETURN 
+p1.first_name + ' ' + p1.last_name AS customer1, 
+p2.first_name + ' ' + p2.last_name AS customer2,
+r.score AS similarity
+ORDER BY similarity DESCENDING, customer1, customer2
+```
+
+#### Result
+
+```raw
+╒══════════════════╤══════════════════╤══════════════════╕
+│customer1         │customer2         │similarity        │
+╞══════════════════╪══════════════════╪══════════════════╡
+│"Adina Dallas"    │"Janice Simmons"  │0.6566200852394104│
+├──────────────────┼──────────────────┼──────────────────┤
+│"Rufus Bryant"    │"Marvin Baldwin"  │0.6330935955047607│
+├──────────────────┼──────────────────┼──────────────────┤
+│"Angelica Wheeler"│"Sofie Beal"      │0.0               │
+├──────────────────┼──────────────────┼──────────────────┤
+│"Angelica Wheeler"│"Sofie Beal"      │0.0               │
+├──────────────────┼──────────────────┼──────────────────┤
+│"Chelsea Malone"  │"Hayden Garcia"   │0.0               │
+├──────────────────┼──────────────────┼──────────────────┤
+```
