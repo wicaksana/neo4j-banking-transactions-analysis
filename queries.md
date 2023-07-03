@@ -172,7 +172,7 @@ LIMIT 10
 
 ```
 
-## Finding similar customers based on purchase history using FastRP and kNN
+## Finding similar customers based on purchase history for merchant recommendation
 
 Leveraging the Neo4j Graph Data Science library. Based on the following [tutorial](https://neo4j.com/docs/graph-data-science/current/end-to-end-examples/fastrp-knn-example/).
 
@@ -255,3 +255,5 @@ ORDER BY similarity DESCENDING, customer1, customer2
 │"Chelsea Malone"  │"Hayden Garcia"   │0.0               │
 ├──────────────────┼──────────────────┼──────────────────┤
 ```
+
+From there, for the pairs of customers we can offer merchants bought by one pair that hasn't been visited by the other pair.
