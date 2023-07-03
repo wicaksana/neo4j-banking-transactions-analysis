@@ -7,6 +7,7 @@ Use the following command to run Neo4j Enterprise on Docker. Update the volume p
 ```
 docker run \
     --env=NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
+    --env NEO4J_PLUGINS='["graph-data-science"]' \
     --restart always \
     --publish=7474:7474 --publish=7687:7687 \
     --volume=/path/to/data/folder:/data \
@@ -48,4 +49,4 @@ Environment specification:
 
 ## Exploratory Cypher queries
 
-[queries.ipynb](./queries.ipynb)
+[queries.md](./queries.md)
