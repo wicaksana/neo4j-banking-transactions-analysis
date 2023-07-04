@@ -76,6 +76,92 @@ LIMIT 10
 └─────────────────┴──────────────┴──────────────────┘
 ```
 
+## Customers with the largest money transfers out
+
+```sql
+MATCH (c:Customer)-[:HAS]->(a:Account)-[:TRANSFER_OUT]->(t:Transfer)
+RETURN c.first_name + ' ' + c.last_name AS name, c.cif,
+sum(t.amount) AS total_transfer
+ORDER BY total_transfer DESC
+LIMIT 10
+```
+
+### Result
+
+```raw
+╒════════════════════╤═════╤══════════════════╕
+│name                │c.cif│total_transfer    │
+╞════════════════════╪═════╪══════════════════╡
+│"Lillian Drummond"  │20   │1483238.71894     │
+├────────────────────┼─────┼──────────────────┤
+│"Dani Flanders"     │3    │1462163.4412220004│
+├────────────────────┼─────┼──────────────────┤
+│"Rebecca Corbett"   │2    │1436589.3078100004│
+├────────────────────┼─────┼──────────────────┤
+│"Martin Edley"      │53   │1380488.0631300001│
+├────────────────────┼─────┼──────────────────┤
+│"Julianna Bowen"    │100  │1329283.8714480002│
+├────────────────────┼─────┼──────────────────┤
+│"Chad Briggs"       │27   │1290009.24792     │
+├────────────────────┼─────┼──────────────────┤
+│"Danielle Blackwall"│31   │1269480.00268     │
+├────────────────────┼─────┼──────────────────┤
+│"Jacob Thomas"      │19   │1261458.3416459998│
+├────────────────────┼─────┼──────────────────┤
+│"Nicholas Morris"   │29   │1252665.157254    │
+├────────────────────┼─────┼──────────────────┤
+│"Lauren Overson"    │99   │1252011.8040470001│
+└────────────────────┴─────┴──────────────────┘
+```
+
+## Recommend merchants to customers who receive money based on the sender's historical purchase records
+
+For example, from the previous query we get Lillian Drummond as the largest sender. 
+We assume that customers transferred by Drummond has some kind of relationships with her.
+We want to recommend merchants purchased by Drummond to those customers who haven't purchased anything from that merchants.
+
+```sql
+MATCH (c:Customer {first_name: 'Lillian', last_name:'Drummond'})-[:HAS]->(:Account)-[:TRANSFER_OUT]->(t:Transfer),
+    (recipient:Customer)-[:HAS]->(:Account)-[:TRANSFER_IN]->(t),
+    (recipient)-[:HAS]->(:Credit_card)-[:BUY]->(:Purchase)<-[:SELL]-(m1:Merchant)
+WITH collect(DISTINCT m1.name) AS merchants, recipient
+MATCH (c)-[:HAS]->(:Credit_card)-[:BUY]->(:Purchase)<-[:SELL]-(m2:Merchant)
+WHERE NOT m2.name IN merchants
+RETURN 
+recipient.first_name + ' ' + recipient.last_name AS name,
+collect(DISTINCT  m2.name) AS names
+```
+
+### Result
+
+```raw
+╒═════════════════╤═════════════════════════════════════════════╕
+│name             │names                                        │
+╞═════════════════╪═════════════════════════════════════════════╡
+│"Quinn Powell"   │["CarMax"]                                   │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Catherine Bloom"│["Leadertech Consulting"]                    │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Judith Addison" │["Erickson"]                                 │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Roger Mcnally"  │["DynCorp"]                                  │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Tom Wellington" │["Danone", "ExxonMobil"]                     │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Carina Pitt"    │["AECOM", "Erickson", "ExxonMobil"]          │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Lucy Ianson"    │["Comcast", "Comodo", "ENEL", "Global Print"]│
+├─────────────────┼─────────────────────────────────────────────┤
+│"Logan Vaughan"  │["Apple Inc.", "Global Print"]               │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Kurt Nanton"    │["Comodo", "Leadertech Consulting"]          │
+├─────────────────┼─────────────────────────────────────────────┤
+│"Noah Ainsworth" │["AECOM", "Comodo", "Vodafone"]              │
+└─────────────────┴─────────────────────────────────────────────┘
+```
+
+
+
 ## Customers with similar shopping interests in 2021
 
 ```sql
